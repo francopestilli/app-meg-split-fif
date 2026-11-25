@@ -1,5 +1,49 @@
 # Split MEG files
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Splits a raw MEG recording into two FIF files covering two user-defined time windows, using MNE-Python.**
+
+Reads the raw MEG file with MNE-Python and saves the segment from t1min to t1max as the first output and the segment from t2min to t2max as the second. Use it to separate, for example, two runs or conditions recorded in one file. Times are in seconds and must lie within the recording.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/meeg/mne/raw` |
+| 📤 **Outputs** | `neuro/meg/fif` ×2 |
+| 🐳 **Container** | `brainlife/mne:0.23dev` |
+| ⚙️ **Resources** | 8 CPUs · 0.17 h walltime |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.529](https://doi.org/10.25663/brainlife.app.529) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `raw01` | `neuro/meeg/mne/raw` | yes | Raw MEG recording readable by mne.io.read_raw (e.g. FIF). |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `out_dir1` | `neuro/meg/fif` | FIF file with the first time window (t1min to t1max). |
+| `out_dir2` | `neuro/meg/fif` | FIF file with the second time window (t2min to t2max). |
+
+<details>
+<summary><b>⚙️ Parameters</b> (4)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `t1min` | number | `0` | Start of the first segment, in seconds. |
+| `t1max` | string | `100` | End of the first segment, in seconds. |
+| `t2min` | number | `100` | Start of the second segment, in seconds. |
+| `t2max` | number | `200` | End of the second segment, in seconds. |
+
+</details>
+
+📚 **References used by this App:**
+- Gramfort A, et al. MEG and EEG data analysis with MNE-Python. Front Neurosci 7:267 (2013). [doi:10.3389/fnins.2013.00267](https://doi.org/10.3389/fnins.2013.00267)
+
+<!-- brainlife-app:end -->
+
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.529-blue.svg)](https://doi.org/10.25663/brainlife.app.529)
 
